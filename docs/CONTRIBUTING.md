@@ -1,4 +1,3 @@
-#  **CONTRIBUTING.md**  
 ### _Guidelines for contributing to the Bash Password Manager_
 
 ## Welcome

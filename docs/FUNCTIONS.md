@@ -1,5 +1,4 @@
-
-# 📘 **FUNCTIONS.md**  
+ 
 ### _Documentation of all functions in the Bash Password Manager_
 
 ## Overview

@@ -1,10 +1,52 @@
 
 # Password Manager (Bash)
 
-A lightweight, educational, security‑focused password manager written entirely in **Bash**.  
+A lightweight, security‑focused password manager written entirely in Bash.  
 It uses strong encryption (AES‑256‑CBC + PBKDF2) and a hashed master password (SHA‑512 crypt) to securely store account passwords on your local machine.
 
-This project demonstrates secure scripting practices, modular Bash design, and CLI tooling — ideal for learning, portfolio building, and experimentation.
+This project demonstrates secure scripting practices, modular Bash design, and CLI tooling — suitable for learning, portfolio building, and experimentation.
+
+---
+
+## Getting Started
+
+This section provides the quickest path to installing, setting up, and running the password manager.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/password-manager.git
+cd password-manager
+```
+
+### 2. Make the main script executable
+
+```bash
+chmod +x password_manager.sh
+```
+
+### 3. Run the setup script (required before first use)
+
+```bash
+sudo ./setup.sh
+```
+
+The setup script will:
+
+- Create the `password-manager` group  
+- Add your user to that group  
+- Create the `data/` and `data/passwords/` directories  
+- Apply secure permissions  
+
+After running the script, log out and log back in so group membership takes effect.
+
+### 4. Launch the password manager
+
+```bash
+./password_manager.sh
+```
+
+On first run, you will be prompted to create a master password.
 
 ---
 
@@ -30,7 +72,7 @@ This project demonstrates secure scripting practices, modular Bash design, and C
 ```
 password-manager/
 │
-├── password_manager.sh        # Main CLI entry point (root folder)
+├── password_manager.sh        # Main CLI entry point
 ├── setup.sh                   # Environment and permissions setup
 │
 ├── src/
@@ -48,66 +90,20 @@ password-manager/
     └── CONTRIBUTING.md
 ```
 
-> **Note:**  
-> The `data/` directory is **not included** in the repository.  
-> It is created automatically by `setup.sh` with secure permissions.
-
----
-
-## Setup (Required Before First Use)
-
-Before running the password manager, run the setup script:
-
-```bash
-sudo ./setup.sh
-```
-
-This script will:
-
-- Create the `password-manager` group  
-- Add your user to that group  
-- Create the `data/` and `data/passwords/` directories  
-- Apply secure permissions  
-- Ensure only authorized users can access stored passwords  
-
-After running the script, **log out and log back in** so group membership takes effect.
-
----
-
-## Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/<your-username>/password-manager.git
-cd password-manager
-```
-
-Make the main script executable:
-
-```bash
-chmod +x password_manager.sh
-```
-
-Run it:
-
-```bash
-./password_manager.sh
-```
-
-On first run, you will be prompted to create a master password.
+Note:  
+The `data/` directory is not included in the repository. It is created automatically by `setup.sh` with secure permissions.
 
 ---
 
 ## Usage
 
-### **Interactive Mode (default)**
+Running the program without flags launches the interactive menu:
 
 ```bash
 ./password_manager.sh
 ```
 
-This launches the menu:
+Menu options:
 
 ```
 1. Add new password
@@ -122,52 +118,45 @@ This launches the menu:
 
 ## CLI Flags
 
-The password manager supports several command‑line options:
-
-### **Show help**
+### Show help
 
 ```bash
 ./password_manager.sh --help
 ```
 
-### **Show version**
+### Show version
 
 ```bash
 ./password_manager.sh --version
 ```
 
-### **Enable debug mode**
+### Enable debug mode
 
 ```bash
 ./password_manager.sh --debug
 ```
 
-### **Disable banner**
+### Disable banner
 
 ```bash
 ./password_manager.sh --no-banner
 ```
 
-### **Reset all data (dangerous)**
+### Reset all data (dangerous)
 
 ```bash
 ./password_manager.sh --reset
 ```
 
-This deletes:
-
-- all encrypted passwords  
-- the master password hash  
-
-Use this for testing or fresh setup.
+This deletes all encrypted passwords and the master password hash.
 
 ---
 
 ## Security Overview
 
-- Master password is hashed using **SHA‑512 crypt** with a random salt  
-- Passwords are encrypted using **AES‑256‑CBC**  
-- Keys are derived using **PBKDF2** with 64,000 iterations  
+- Master password is hashed using SHA‑512 crypt with a random salt  
+- Passwords are encrypted using AES‑256‑CBC  
+- Keys are derived using PBKDF2 with 64,000 iterations  
 - No plaintext passwords are ever stored  
 - Each account has its own encrypted file  
 
@@ -177,11 +166,9 @@ See `docs/SECURITY.md` for full details.
 
 ## Documentation
 
-- **FUNCTIONS.md** — full function reference  
-- **SECURITY.md** — encryption, hashing, threat model  
-- **CONTRIBUTING.md** — how to contribute  
-
-All located in the `docs/` folder.
+- `FUNCTIONS.md` — full function reference  
+- `SECURITY.md` — encryption, hashing, threat model  
+- `CONTRIBUTING.md` — contribution guidelines  
 
 ---
 
@@ -195,5 +182,5 @@ All located in the `docs/` folder.
 
 ## License
 
-This project is licensed under the **MIT License**.  
+This project is licensed under the MIT License.  
 See the `LICENSE` file for details.

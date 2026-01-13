@@ -1,4 +1,4 @@
-#  **SECURITY.md**  
+
 ### _Security model and considerations for the Bash Password Manager_
 
 ## Overview
